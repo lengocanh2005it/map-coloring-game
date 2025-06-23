@@ -1,54 +1,55 @@
-# React + TypeScript + Vite
+# 🗺️ Map Coloring Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive game that helps users better understand the **map coloring problem** and the **greedy algorithm**.
 
-Currently, two official plugins are available:
+## 🎯 Objective
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The player must **color each country** such that **no neighboring countries share the same color**, while also trying to **use the fewest number of colors possible**.
 
-## Expanding the ESLint configuration
+## 🚀 Live Demo
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+👉 [https://map-coloring-game.vercel.app](https://map-coloring-game.vercel.app)
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## ⚙️ Key Features
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- 🎨 **Manual coloring** of individual countries by selecting a color.
+- ⚡ **Automatic coloring** using the Greedy algorithm.
+- 📜 **Coloring log** that displays:
+  - Which color was assigned to each country.
+  - Which colors have been used by its neighboring countries.
+- ✅ **Comparison with Greedy algorithm**: checks if the user’s coloring matches the greedy solution.
+- 💡 **Explanation of the Greedy algorithm** idea.
+- 📊 **Statistics**: number of colored countries and colors used.
+- 🔄 **Reset button** to restart the coloring process.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🧠 Problem & Algorithm Overview
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+### 📌 Map Coloring Problem
+
+- Each country is represented as a **node** in a graph.
+- An **edge** between two nodes indicates that the countries are neighbors and must not share the same color.
+- The goal is to **color all nodes** such that no adjacent nodes share the same color.
+
+### ⚙️ Greedy Coloring Algorithm
+
+- Traverse each country in a given order.
+- For each country:
+  - Assign the **first available color** that has not been used by its neighbors.
+  - Do not go back and change previously assigned colors (no backtracking).
+- **Fast** and **simple**, but does **not guarantee** the minimum number of colors.
+
+---
+
+## 🧩 Tech Stack
+
+- ⚛️ ReactJS + TypeScript
+- 💨 Tailwind CSS
+- 🔔 React Hot Toast
+
+## 📁 Getting Started Locally
+
+```bash
+git clone https://github.com/lengocanh2005it/map-coloring-game.git
+cd map-coloring-game
+npm install
+npm run dev
